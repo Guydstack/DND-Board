@@ -28,10 +28,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   cors({
     credentials: true,
-    origin: allowedOrigins,
+    origin: /\.onrender\.com$/,
     optionsSuccessStatus: 200,
   })
 );
+
+
 
 
 app.use('/users', users_router);
