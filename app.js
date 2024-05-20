@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   cors({
     credentials: true,
-    origin: /\.onrender\.com$/,
+    origin: allowedOrigins,
     optionsSuccessStatus: 200,
   })
 );
