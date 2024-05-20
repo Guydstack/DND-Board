@@ -13,9 +13,7 @@ const categories_router = require("./routes/categories_router");
 const contact_router = require("./routes/contact_router");
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
+  "https://dnd-board-admin.onrender.com"
 ];
 
 
