@@ -13,7 +13,8 @@ const categories_router = require("./routes/categories_router");
 const contact_router = require("./routes/contact_router");
 
 const allowedOrigins = [
-  "https://dnd-board-admin.onrender.com"
+  "https://dnd-board-admin.onrender.com",
+  "https://dnd-board-client.onrender.com"
 ];
 
 
