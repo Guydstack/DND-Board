@@ -157,7 +157,7 @@ module.exports = {
       await Model.findByIdAndUpdate(manager._id, {
         tokens: [...oldTokens, { token, signedAt: Date.now().toString() }],
       }).exec();
-       res.cookie('token',token,{ maxAge :1000 * 60 * 60 , httpOnly: true, sameSite: 'None', secure: true})
+       res.cookie('token',token,{ maxAge :1000 * 60 * 60 , httpOnly: true, sameSite: 'lax',})
       return res.status(201).json({
         success: true,
         message: "login seccessfully",
@@ -239,7 +239,7 @@ module.exports = {
         tokens: [...updatedTokens, { token:new_token, signedAt: Date.now().toString() }],
       }).exec();
 
-          res.cookie('token', new_token,{httpOnly:true, sameSite: 'None', secure: true, maxAge:1000 * 60 * 60 * 3})
+          res.cookie('token', new_token,{httpOnly:true, sameSite: 'lax', maxAge:1000 * 60 * 60 * 3})
 
       return res.status(201).json({
         success: true,
