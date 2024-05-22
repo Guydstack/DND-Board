@@ -2,9 +2,8 @@ const jwt = require('jsonwebtoken');
 const Manager = require('../models/Manager');
 
 module.exports = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (authHeader) {
-    const token = authHeader.split(' ')[1];
+  if (req.cookies) {
+    const token = req.cookies.token;
 
     try {
       const decode = jwt.verify(token, process.env.JWT_SECRET);
