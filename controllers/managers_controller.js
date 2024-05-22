@@ -239,7 +239,7 @@ module.exports = {
         tokens: [...updatedTokens, { token:new_token, signedAt: Date.now().toString() }],
       }).exec();
 
-          res.cookie('token', new_token,{httpOnly:true, maxAge:1000 * 60 * 60 * 3})
+          res.cookie('token', new_token,{httpOnly:true, sameSite: 'None', secure: true, maxAge:1000 * 60 * 60 * 3})
 
       return res.status(201).json({
         success: true,
