@@ -16,26 +16,12 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      /*       const { page = 1, limit = 3} = req.query;
-
-      const count = await Model.count();
-
-      console.log(count);
-
-      const pages = Math.ceil(count / limit);
-
-      console.log(pages);
-
-      const models = await Model.find().skip((page - 1 ) * limit).limit(limit).exec(); */
-
+      
       const models = await Model.find().populate("category").exec();
 
       return res.status(200).json({
         success: true,
         message: `success to find all ${objects_name}`,
-        /*         limit,
-        count,
-        pages, */
         [objects_name]: models,
       });
     } catch (error) {
@@ -101,19 +87,9 @@ module.exports = {
   },
   getAllProductsForManager: async (req, res) => {
     try {
-      // const { page = 1, limit = 5} = req.query;
       const { page = 1, limit = 20} = req.query;
-
       const count = await Model.count();
-
-      // console.log(count);
-
       const pages = Math.ceil(count / limit);
-
-      // console.log(pages);
-
-      // const models = await Model.find().skip((page - 1 ) * limit).limit(limit).exec(); */
-
       const models = await Model.find().populate("categories").skip((page - 1 ) * limit).limit(limit).exec();
 
       return res.status(200).json({
