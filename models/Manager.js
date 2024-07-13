@@ -30,7 +30,7 @@ const manager_schema = new Schema({
 
     permission: {
         type: Number,
-        default: 1
+        default: 2
     }
 
 })
