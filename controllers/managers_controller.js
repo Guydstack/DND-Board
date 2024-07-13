@@ -180,6 +180,8 @@ module.exports = {
   logoutManager: async (req, res) => {
       try {
       const tokens = req.manager.tokens;
+              console.log(tokens);
+
   
       const newTokens = tokens.filter(t => t.token !== req.token);
   
