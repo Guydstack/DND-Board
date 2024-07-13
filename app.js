@@ -34,10 +34,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  console.log('Cookies:', req.cookies.token);
-  next();
-});
 
 
 app.use('/users', users_router);
