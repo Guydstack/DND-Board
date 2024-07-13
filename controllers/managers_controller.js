@@ -166,6 +166,7 @@ module.exports = {
           _id:manager._id,
           manager_name: manager.manager_name,
           manager_email: manager.manager_email,
+          permission:manager.permission,
         },
       });
     } catch (error) {
