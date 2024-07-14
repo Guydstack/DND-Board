@@ -4,6 +4,7 @@ const Manager = require('../models/Manager');
 module.exports = async (req, res, next) => {
     
   const authHeader = req.headers.authorization;
+    console.log(authHeader)
 
   if (authHeader) {
     const token = authHeader.split(' ')[1];
