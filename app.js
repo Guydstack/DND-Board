@@ -35,13 +35,17 @@ app.use(
 );
 
 
+const apiRouter = express.Router();
 
-app.use('/users', users_router);
-app.use('/products', products_router);
-app.use('/carts', carts_router);
-app.use('/orders', orders_router);
-app.use('/categories', categories_router);
-app.use('/contact', contact_router);
 
+apiRouter.use('/users', users_router);
+apiRouter.use('/products', products_router);
+apiRouter.use('/carts', carts_router);
+apiRouter.use('/orders', orders_router);
+apiRouter.use('/categories', categories_router);
+apiRouter.use('/contact', contact_router);
+
+// Use the API router
+app.use('/api', apiRouter);
 
 module.exports = app;
