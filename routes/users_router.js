@@ -32,7 +32,7 @@ const {
 
 // admins request
 router.post('/admins/add-manager', addManagerForAdmins);
-router.get('/managers/getall', getAll);
+router.get('/managers/getall',auth_manager, getAll);
 router.put('/managers/update-by-id-for-manager/:admin_id',updateById);
 router.delete('/managers/delete-by-id-for-manager/:admin_id',deleteById);
 
