@@ -13,6 +13,9 @@ const {
     addManagerForAdmins,
     recoveryPassword,
     updatePassword,
+    getAll,
+    updateById,
+    deleteById,
 } = require('../controllers/managers_controller');
 
 
@@ -29,6 +32,9 @@ const {
 
 // admins request
 router.post('/admins/add-manager', addManagerForAdmins);
+router.get('/managers/getall', getAll);
+router.put('/managers/update-by-id-for-manager/:admin_id',updateById);
+router.delete('/managers/delete-by-id-for-manager/:admin_id',deleteById);
 
 
 // managers requests
