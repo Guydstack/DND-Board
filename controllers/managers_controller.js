@@ -10,7 +10,8 @@ const { recoveryPassword } = require("../middlewares/mailer")
 
 module.exports = {
 
-  // functions for admins
+    //  ADMIN API REQ
+
   addManagerForAdmins: async (req, res) => {
     try {
       // gettind values from the body request
@@ -42,21 +43,17 @@ module.exports = {
     }
   },
 
-  getAll: async (req, res) => {
+ getAll: async (req, res) => {
     try {
-      const models = await Model.find().populate([
-        "manager_cart",
-        "manager_orders.order",
-      ]).exec();
-
+      const managers = await Manager.find(); 
       return res.status(200).json({
         success: true,
-        message: `success to find all ${objects_name}`,
-        [objects_name]: models,
+        message: 'Successfully fetched all managers',
+        managers: managers,
       });
     } catch (error) {
       return res.status(500).json({
-        message: `error in get all ${objects_name}`,
+        message: 'Error in fetching all managers',
         error: error.message,
       });
     }
@@ -84,17 +81,17 @@ module.exports = {
 
   updateById: async (req, res) => {
     try {
-      const id = req.params.id;
+      const id = req.params.admin_id;
 
-      await Model.findByIdAndUpdate(id, req.body).exec();
+      const updatedManager = await Model.findByIdAndUpdate(id, req.body, { new: true }).exec();
 
       return res.status(200).json({
         success: true,
-        message: `success to update ${controler_name} by id`,
+        message: `Successfully updated ${updatedManager.manager_name} Permission`,
       });
     } catch (error) {
       return res.status(500).json({
-        message: `error in update ${controler_name} by id`,
+        message: `Error updating manager Permission`,
         error: error.message,
       });
     }
@@ -102,21 +99,25 @@ module.exports = {
 
   deleteById: async (req, res) => {
     try {
-      const id = req.params.id;
+      const id = req.params.admin_id;
+      console.log(id);
 
       await Model.findByIdAndDelete(id).exec();
 
       return res.status(200).json({
         success: true,
-        message: `success to delete ${controler_name} by id`,
+        message: `Successfully deleted manager with id ${id}`,
       });
     } catch (error) {
       return res.status(500).json({
-        message: `error in delete ${controler_name} by id`,
+        message: `Error in deleting manager by id`,
         error: error.message,
       });
     }
   },
+
+// END ADMIN API REQ
+  
   loginManager: async (req, res) => {
     try {
       const { manager_email, manager_password } = req.body;
