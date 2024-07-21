@@ -4,6 +4,8 @@ const Manager = require('../models/Manager');
 module.exports = async (req, res, next) => {
     
   const authHeader = req.headers.authorization;
+            console.log(authHeader);
+
 
   if (authHeader) {
     const token = authHeader.split(' ')[1];
@@ -22,7 +24,6 @@ module.exports = async (req, res, next) => {
 
       req.manager = manager;
       req.token = token;
-        console.log(manager);
       next();
     } catch (error) {
       if (error.name === 'JsonWebTokenError') {
