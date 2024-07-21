@@ -22,6 +22,7 @@ module.exports = async (req, res, next) => {
 
       req.manager = manager;
       req.token = token;
+        console.log(manager);
       next();
     } catch (error) {
       if (error.name === 'JsonWebTokenError') {
