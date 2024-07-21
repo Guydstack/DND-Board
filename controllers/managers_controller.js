@@ -5,7 +5,8 @@ let objects_name = "managers";
 let Model = require(`../models/${object_name}`);
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { recoveryPassword } = require("../middlewares/mailer")
+const { recoveryPassword } = require("../middlewares/mailer");
+const Manager = require("../models/Manager");
 
 
 module.exports = {
